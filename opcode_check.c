@@ -3,10 +3,10 @@
 /**
  * get_code - Entry Point
  * Desc: get_code function
- * @s: char pointer type
+ * @inst: char pointer type
  * Return: Function that checks from the list
  */
-int (*get_code(char *inst))(stack **, unsigned int)
+int (*get_code(char *inst))(stack_t **, unsigned int)
 {
 	instruction_t ops[] = {
 		{"push", op_push},
