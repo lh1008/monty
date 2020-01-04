@@ -10,6 +10,18 @@
 #include <string.h>
 
 /**
+ * struck global_ization - simple linked variable list
+ * @meet: pointer to char for input monty program
+ * Description:
+ **/
+extern struct global_ization
+{
+	char *meet;
+} make_it;
+
+make_it verify;
+
+/**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
  * @prev: points to the previous element of the stack (or queue)
@@ -39,6 +51,9 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
+void (*_get_code(char *s))(stack_t **, unsigned int);
+void op_push(stack_t **stack, unsigned int line_number);
+void op_pall(stack_t **stack, unsigned int line_number);
+int validate(char *st);
 
 #endif /* MONTY_H */

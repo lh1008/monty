@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * get_code - Entry Point
- * Desc: get_code function
+ * _get_code - Entry Point
+ * Desc: _get_code function
  * @inst: char pointer type
  * Return: Function that checks from the list
  */
-int (*get_code(char *inst))(stack_t **, unsigned int)
+void (*_get_code(char *inst))(stack_t **, unsigned int)
 {
 	instruction_t ops[] = {
 		{"push", op_push},

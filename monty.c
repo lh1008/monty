@@ -9,12 +9,15 @@
 int main(int argc, char *argv[])
 {
 	FILE *fd;
-	char *buf, *inst, *num;
+	char *buf, *inst;
 	size_t bufsize = 1024;
+	stack_t *stack = NULL;
+	unsigned int line_count = 0;
+	void (*f)(stack_t **, unsigned int);
 
 	if (argc > 2 || argc == 1)
 	{
-		printf("USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	else if (argc == 2)
@@ -22,7 +25,7 @@ int main(int argc, char *argv[])
 		fd = fopen(argv[1], "r");
 		if (fd == NULL)
 		{
-			printf("Error: Can't open file %s\n", argv[1]);
+			fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 			exit(EXIT_FAILURE);
 		}
 		else
@@ -30,24 +33,27 @@ int main(int argc, char *argv[])
 			buf = malloc(1024);
 			if (buf == NULL)
 			{
-				printf("Error: malloc failed\n");
+				fprintf(stderr, "Error: malloc failed\n");
 				free(buf);
 				exit(EXIT_FAILURE);
 			}
 			while (getline(&buf, &bufsize, fd) != -1)
 			{
+				line_count++;
 				inst = strtok(buf, "\n\t\r ");
+				verify.meet = strtok(NULL, "\n\t\r ");
 				if (inst != NULL)
 				{
 					printf("%s\n", inst);
-				}
-				num = strtok(NULL, "\n\t\r ");
-				if (num != NULL)
-				{
-					printf("%s\n", num);
+					f = _get_code(inst);
+					if (f != NULL)
+						f(&stack, line_count);
 				}
 			}
 		}
+		free(buf);
+		buf = NULL;
+		fclose(fd);
 	}
 	return (0);
 }
