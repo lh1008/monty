@@ -10,16 +10,17 @@
 #include <string.h>
 
 /**
- * struck global_ization - simple linked variable list
+ * struct global_ization - simple linked variable list
  * @meet: pointer to char for input monty program
- * Description:
+ *
+ * Description: opcdoe and its functions
  **/
-extern struct global_ization
+typedef struct global_ization
 {
 	char *meet;
 } make_it;
 
-make_it verify;
+extern make_it yoyo;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

@@ -10,7 +10,7 @@
 void op_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node;
-	char *value = verify.meet;
+	char *value = yoyo.meet;
 	int me;
 
 	if (value == NULL)
