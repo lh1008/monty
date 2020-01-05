@@ -12,6 +12,7 @@ void (*_get_code(char *inst))(stack_t **, unsigned int)
 		{"push", op_push},
 		{"pall", op_pall},
 		{"pint", op_pint},
+		{"pop", op_pop},
 		{NULL, NULL}
 	};
 	int mv_list = 0;

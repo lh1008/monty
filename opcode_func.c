@@ -81,3 +81,28 @@ void op_pint(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 	(void)line_number;
 }
+
+/**
+ * op_pop - Entry point
+ * Desc: op_pop function
+ * @stack: pointer to pointer to stack_t
+ * @line_number: unsigned int type
+ * Return: Function that eliminates the top element of a stack.
+ **/
+void op_pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *gotit = *stack;
+
+
+	if (gotit != NULL)
+	{
+		gotit = (*stack)->next;
+		if (gotit != NULL)
+			gotit->prev = NULL;
+		free(*stack);
+		*stack = gotit;
+	}
+	else
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+	(void)line_number;
+}

@@ -59,5 +59,6 @@ int validate(char *st);
 void free_space(stack_t **release);
 int receive(char *file_name);
 void op_pint(stack_t **stack, unsigned int line_number);
+void op_pop(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
