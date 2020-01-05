@@ -16,6 +16,8 @@ void (*_get_code(char *inst))(stack_t **, unsigned int)
 		{"swap", op_swap},
 		{"add", op_add},
 		{"nop", op_nop},
+		{"mul", op_mul},
+		{"div", op_div},
 		{NULL, NULL}
 	};
 	int mv_list = 0;
