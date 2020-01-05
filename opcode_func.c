@@ -48,7 +48,7 @@ void op_push(stack_t **stack, unsigned int line_number)
  * Desc: op_pall function
  * @stack: pointer to pointer to stack_t
  * @line_number: unsigned int type
- * Return: Function that prints all the elements of a list.
+ * Return: Function that prints all the elements of a list pall.
  **/
 void op_pall(stack_t **stack, unsigned int line_number)
 {
@@ -59,5 +59,25 @@ void op_pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", (gotit)->n);
 		gotit = (gotit)->next;
 	}
+	(void)line_number;
+}
+
+/**
+ * op_pint - Entry point
+ * Desc: op_pint function
+ * @stack: pointer to pointer to stack_t
+ * @line_number: unsigned int type
+ * Return: Function that prints the elements of a list in pint.
+ **/
+void op_pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *gotit = *stack;
+
+	if (gotit != NULL)
+	{
+		printf("%d\n", (gotit)->n);
+	}
+	else
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 	(void)line_number;
 }

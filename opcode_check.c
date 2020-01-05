@@ -11,6 +11,7 @@ void (*_get_code(char *inst))(stack_t **, unsigned int)
 	instruction_t ops[] = {
 		{"push", op_push},
 		{"pall", op_pall},
+		{"pint", op_pint},
 		{NULL, NULL}
 	};
 	int mv_list = 0;
