@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
 	{
 		receive(argv[1]);
 	}
+	return (0);
 }
 
 /**
