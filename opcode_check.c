@@ -13,6 +13,9 @@ void (*_get_code(char *inst))(stack_t **, unsigned int)
 		{"pall", op_pall},
 		{"pint", op_pint},
 		{"pop", op_pop},
+		{"swap", op_swap},
+		{"add", op_add},
+		{"nop", op_nop},
 		{NULL, NULL}
 	};
 	int mv_list = 0;
