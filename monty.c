@@ -50,7 +50,7 @@ int receive(char *file_name)
 		{	line_count++;
 			inst = strtok(buf, "\n\t\r ");
 			yoyo.meet = strtok(NULL, "\n\t\r ");
-			if (inst != NULL)
+			if (inst != NULL && inst[0] != '#')
 			{	f = _get_code(inst);
 				if (f != NULL)
 					f(&stack, line_count);
