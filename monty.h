@@ -20,7 +20,7 @@ typedef struct global_ization
 	char *meet;
 } make_it;
 
-extern make_it yoyo;
+make_it yoyo;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

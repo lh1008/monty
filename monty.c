@@ -1,5 +1,4 @@
 #include "monty.h"
-make_it yoyo = {NULL};
 /**
  * main - Entry point
  * Desc: main function
@@ -55,7 +54,7 @@ int receive(char *file_name)
 				if (f != NULL)
 					f(&stack, line_count);
 				else
-				{	fprintf(stderr, "L%u: unknown instruction %s", line_count, inst);
+				{	fprintf(stderr, "L%u: unknown instruction %s\n", line_count, inst);
 					free(buf);
 					free_space(&stack);
 					exit(EXIT_FAILURE);
