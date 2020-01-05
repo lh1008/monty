@@ -23,7 +23,6 @@ int main(int argc, char *argv[])
 	}
 	else if (argc == 2)
 	{
-		printf("1\n");
 		fd = fopen(argv[1], "r");
 		if (fd == NULL)
 		{
@@ -33,7 +32,6 @@ int main(int argc, char *argv[])
 		else
 		{
 			buf = malloc(1024);
-			printf("2\n");
 			if (buf == NULL)
 			{
 				fprintf(stderr, "Error: malloc failed\n");
@@ -47,13 +45,17 @@ int main(int argc, char *argv[])
 				yoyo.meet = strtok(NULL, "\n\t\r ");
 				if (inst != NULL)
 				{
-					printf("%s\n", inst);
 					f = _get_code(inst);
-					printf("3\n");
 					if (f != NULL)
 						f(&stack, line_count);
+					else
+					{
+						fprintf(stderr, "L%u: unknown instruction %s", line_count, inst);
+						free(buf);
+						free_space(&stack);
+						exit(EXIT_FAILURE);
+					}
 				}
-				printf("4\n");
 			}
 		}
 		free(buf);

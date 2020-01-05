@@ -13,12 +13,11 @@ void (*_get_code(char *inst))(stack_t **, unsigned int)
 		{"pall", op_pall},
 		{NULL, NULL}
 	};
-
-	int mv_list;
+	int mv_list = 0;
 
 	while (ops[mv_list].opcode != NULL)
 	{
-		if (strcmp(inst, ops[mv_list].opcode))
+		if (strcmp(inst, ops[mv_list].opcode) == 0)
 		{
 			return (ops[mv_list].f);
 		}

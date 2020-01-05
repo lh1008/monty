@@ -52,13 +52,12 @@ void op_push(stack_t **stack, unsigned int line_number)
  **/
 void op_pall(stack_t **stack, unsigned int line_number)
 {
-	size_t counter = 0;
+	stack_t *gotit = *stack;
 
-	while (*stack != NULL)
+	while (gotit != NULL)
 	{
-		printf("%d\n", (*stack)->n);
-		counter++;
-		*stack = (*stack)->next;
+		printf("%d\n", (gotit)->n);
+		gotit = (gotit)->next;
 	}
 	(void)line_number;
 }
