@@ -95,7 +95,6 @@ void op_pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *gotit = *stack;
 
-
 	if (gotit != NULL)
 	{
 		gotit = (*stack)->next;
@@ -121,7 +120,6 @@ void op_pop(stack_t **stack, unsigned int line_number)
 void op_swap(stack_t **stack, unsigned int line_number)
 {
 	int gotit_n;
-
 
 	if (*stack != NULL && (*stack)->next != NULL)
 	{
