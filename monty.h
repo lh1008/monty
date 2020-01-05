@@ -13,11 +13,14 @@
  * struct global_ization - simple linked variable list
  * @meet: pointer to char for input monty program
  *
- * Description: opcdoe and its functions
+ * Description: opcode and its functions, buffer that
+ * allocates memory, and fd, open file descriptor.
  **/
 typedef struct global_ization
 {
 	char *meet;
+	char *buffer;
+	FILE *fd;
 } make_it;
 
 make_it yoyo;

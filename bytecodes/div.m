@@ -1,5 +1,6 @@
 push 1
 push 2
 push 3
-div 20
-div 5
+pall
+div
+pall

@@ -27,28 +27,27 @@ int main(int argc, char *argv[])
  **/
 int receive(char *file_name)
 {
-	FILE *fd;
-	char *buf, *inst;
+	char *inst;
 	size_t bufsize = 1024;
 	stack_t *stack = NULL;
 	unsigned int line_count = 0;
 	void (*f)(stack_t **, unsigned int);
 
-	fd = fopen(file_name, "r");
-	if (fd == NULL)
+	yoyo.fd = fopen(file_name, "r");
+	if (yoyo.fd == NULL)
 	{	fprintf(stderr, "Error: Can't open file %s\n", file_name);
 		exit(EXIT_FAILURE);
 	}
 	else
-	{	buf = malloc(1024);
-		if (buf == NULL)
+	{	yoyo.buffer = malloc(1024);
+		if (yoyo.buffer == NULL)
 		{	fprintf(stderr, "Error: malloc failed\n");
-			free(buf);
+			free(yoyo.buffer);
 			exit(EXIT_FAILURE);
 		}
-		while (getline(&buf, &bufsize, fd) != -1)
+		while (getline(&(yoyo.buffer), &bufsize, yoyo.fd) != -1)
 		{	line_count++;
-			inst = strtok(buf, "\n\t\r ");
+			inst = strtok(yoyo.buffer, "\n\t\r ");
 			yoyo.meet = strtok(NULL, "\n\t\r ");
 			if (inst != NULL && inst[0] != '#')
 			{	f = _get_code(inst);
@@ -56,15 +55,15 @@ int receive(char *file_name)
 					f(&stack, line_count);
 				else
 				{	fprintf(stderr, "L%u: unknown instruction %s\n", line_count, inst);
-					free(buf);
+					free(yoyo.buffer);
 					free_space(&stack);
 					exit(EXIT_FAILURE);
 				}
 			}
 		}
 	}
-	free(buf);
-	buf = NULL;
-	fclose(fd);
+	free(yoyo.buffer);
+	yoyo.buffer = NULL;
+	fclose(yoyo.fd);
 	return (0);
 }

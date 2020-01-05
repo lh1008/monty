@@ -4,7 +4,7 @@
  * free_space - Entry
  * Desc: free_space function
  * @release: pointer to pointer stack_t
- * Return: Free space un momeries allocation
+ * Return: Free space in momeries allocation
  **/
 void free_space(stack_t **release)
 {
@@ -16,4 +16,6 @@ void free_space(stack_t **release)
 		free(*release);
 		*release = getit;
 	}
+	free(yoyo.buffer);
+	fclose(yoyo.fd);
 }

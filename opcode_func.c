@@ -16,6 +16,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 	if (value == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		free_space(stack);
 		exit(EXIT_FAILURE);
 	}
 	else if (validate(value))
@@ -25,6 +26,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		free_space(stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -33,6 +35,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 	{
 		free(new_node);
 		fprintf(stderr, "Error: malloc failed\n");
+		free_space(stack);
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = me;
@@ -80,6 +83,7 @@ void op_pint(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		free_space(stack);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -106,6 +110,7 @@ void op_pop(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		free_space(stack);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -130,6 +135,7 @@ void op_swap(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short", line_number);
+		free_space(stack);
 		exit(EXIT_FAILURE);
 	}
 }

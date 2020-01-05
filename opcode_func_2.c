@@ -17,6 +17,7 @@ void op_add(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		free_space(stack);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -53,6 +54,7 @@ void op_sub(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
+		free_space(stack);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -73,7 +75,8 @@ void op_mul(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		fprintf(stderr, "L%u: can't multiply, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't mult, stack too short\n", line_number);
+		free_space(stack);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -89,12 +92,19 @@ void op_div(stack_t **stack, unsigned int line_number)
 {
 	if (*stack != NULL && (*stack)->next != NULL)
 	{
+		if ((*stack)->n == 0)
+		{
+			fprintf(stderr, "L%u: division by zero", line_number);
+			free_space(stack);
+			exit(EXIT_FAILURE);
+		}
 		(*stack)->next->n = (*stack)->next->n / (*stack)->n;
 		op_pop(stack, line_number);
 	}
 	else
 	{
-		fprintf(stderr, "L%u: can't divide, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't division, stack too short\n", line_number);
+		free_space(stack);
 		exit(EXIT_FAILURE);
 	}
 }
