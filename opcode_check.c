@@ -17,6 +17,7 @@ void (*_get_code(char *inst, unsigned int line))(stack_t **, unsigned int)
 		{"swap", op_swap},
 		{"add", op_add},
 		{"nop", op_nop},
+		{"sub", op_sub},
 		{"mul", op_mul},
 		{"div", op_div},
 		{NULL, NULL}
