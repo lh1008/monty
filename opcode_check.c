@@ -4,9 +4,10 @@
  * _get_code - Entry Point
  * Desc: _get_code function
  * @inst: char pointer type
+ * @line: unsigned int line_counter from monty.c
  * Return: Function that checks from the list
  */
-void (*_get_code(char *inst))(stack_t **, unsigned int)
+void (*_get_code(char *inst, unsigned int line))(stack_t **, unsigned int)
 {
 	instruction_t ops[] = {
 		{"push", op_push},
@@ -30,5 +31,6 @@ void (*_get_code(char *inst))(stack_t **, unsigned int)
 		}
 		mv_list++;
 	}
-	return (NULL);
+	fprintf(stderr, "L%u: unknown instruction %s\n", line, inst);
+	exit(EXIT_FAILURE);
 }

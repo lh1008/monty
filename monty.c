@@ -39,31 +39,23 @@ int receive(char *file_name)
 		exit(EXIT_FAILURE);
 	}
 	else
-	{	yoyo.buffer = malloc(1024);
-		if (yoyo.buffer == NULL)
-		{	fprintf(stderr, "Error: malloc failed\n");
-			free(yoyo.buffer);
-			exit(EXIT_FAILURE);
-		}
+	{
 		while (getline(&(yoyo.buffer), &bufsize, yoyo.fd) != -1)
 		{	line_count++;
 			inst = strtok(yoyo.buffer, "\n\t\r ");
 			yoyo.meet = strtok(NULL, "\n\t\r ");
 			if (inst != NULL && inst[0] != '#')
-			{	f = _get_code(inst);
+			{	f = _get_code(inst, line_count);
 				if (f != NULL)
 					f(&stack, line_count);
 				else
 				{	fprintf(stderr, "L%u: unknown instruction %s\n", line_count, inst);
-					free(yoyo.buffer);
 					free_space(&stack);
 					exit(EXIT_FAILURE);
 				}
 			}
 		}
 	}
-	free(yoyo.buffer);
-	yoyo.buffer = NULL;
-	fclose(yoyo.fd);
+	free_space(&stack);
 	return (0);
 }

@@ -55,7 +55,7 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void (*_get_code(char *s))(stack_t **, unsigned int);
+void (*_get_code(char *inst, unsigned int line_count))(stack_t **, unsigned int);
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
 int validate(char *st);
