@@ -22,7 +22,7 @@ void op_mod(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
 		free_space(stack);
 		exit(EXIT_FAILURE);
 	}
