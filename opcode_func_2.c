@@ -94,7 +94,7 @@ void op_div(stack_t **stack, unsigned int line_number)
 	{
 		if ((*stack)->n == 0)
 		{
-			fprintf(stderr, "L%u: division by zero", line_number);
+			fprintf(stderr, "L%u: division by zero\n", line_number);
 			free_space(stack);
 			exit(EXIT_FAILURE);
 		}
